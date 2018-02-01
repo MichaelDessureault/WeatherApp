@@ -1,0 +1,107 @@
+h1, .object {
+	text-align: center;
+}
+#container{
+	width:96%;
+	padding: 0% 2%;
+}
+
+#wrapper {
+	text-align: center;
+}
+
+#searchWrapper {
+	padding: 0% 2%;
+}
+
+.clear {
+	clear: left;
+}
+
+.largeFont {
+	font-size: 40px;
+}
+
+sup {
+	font-size: 24px;
+}
+
+.description {
+	margin: 0px;
+}
+
+.ui-collapsible-content{
+	padding-left: 0% !important; 
+	padding-right: 0% !important;
+}
+
+.object {
+	width: 24%;
+	border-right-width: 1px;
+	border-right-style: solid;
+
+	border-right-color: rgb(191, 205, 216);
+
+	float: left;
+	word-wrap: break-word;
+	overflow: hidden;
+
+	padding-top: 2%;
+}
+.object-content {
+	padding-top: 0%;
+	padding-right: 10%;
+	padding-left: 10%;
+	padding-bottom: 100em;
+	margin-bottom: -100em;
+}
+.object:nth-child(4n+0) {
+	margin-right: 0%;
+	border: 0px;
+}
+
+.object-content:nth-child(4n+0) {
+	padding-right: 2%;
+}
+
+.object:nth-child(4n+1), .object-content:nth-child(4n+1){
+	margin-left: 1.5%;
+	clear:left;
+}
+
+.object:nth-child(n+5){
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: rgb(191, 205, 216);
+	padding-top: 4%;
+}
+
+@media (max-device-width: 465px){
+	.object {
+		width: 48%;
+		padding-right: 0%;
+		border: 0px;
+	}
+
+	.object:nth-child(2n+1), .object-content:nth-child(2n+1){
+		margin-left: 1.5%;
+		clear:left;
+	}
+
+	.object:nth-child(2n+1){
+		border-right-width: 1px;
+		border-right-style: solid;
+		border-right-color: rgb(191, 205, 216);
+
+		border-left-width: 1px;
+		border-left-style: solid;
+
+		border-left-color: rgb(191, 205, 216);
+	}
+
+	.object:nth-child(n+3){
+		border-top-width: 1px;
+		border-top-style: solid;
+		border-top-color: rgb(191, 205, 216);
+	}
+}

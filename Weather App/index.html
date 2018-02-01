@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Final Project</title>
+	<link rel="stylesheet" href="resources/css/main.css">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+
+	<link rel="stylesheet" href="resources\weather-icons-master\css\weather-icons-wind.css">
+	<link rel="stylesheet" href="resources\weather-icons-master\css\weather-icons-wind.min.css">
+	<link rel="stylesheet" href="resources\weather-icons-master\css\weather-icons.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>	
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"> </script>
+	<script src="vendors/handlebars-v4.0.5.js" charset="utf-8"> </script>
+	<script src="resources/js/script.js" type="text/javascript" charset="utf-8"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script id="weatherTemplate" type="text/x-handlebars-template">
+		
+			<div data-role="header">
+				<h1> {{city.name}} Weather </h1>
+			</div>
+
+			<div role="main">
+				<div id="container">
+					<h3 style="text-align: center"> To{{dayOrNight}}'s Weather </h3> 
+					<div id="wrapper">
+						<p><span class="wi {{weatherImage list.0.weather.0.description 0}} largeFont"></span> <span class="metric-number largeFont">{{round list.0.temp.day}}</span><sup>°c</sup></p>
+						<p class="description"> {{list.0.weather.0.description}} </p>
+						<br class="clear">
+					</div> <!-- /wrapper -->
+
+					<div id="showChart" class="collapsible-button" data-role="collapsible" data-collapsed-icon="false">
+						<h3> Displays todays weather chart </h3>
+						<div id="canvasContainer"> 
+							<canvas id='myCanvas' width='200' height='100'></canvas> 
+						</div>
+					</div> <!-- /showCart -->
+
+					<div id="showLongTermReport" class="collapsible-button" data-role="collapsible" data-collapsed-icon="false">
+						<h3> Displays Long term weather report </h3>
+						{{#each list}}
+						{{#if (ifIndexNot0 @index)}}
+						<div class="object"> 
+							<div class="object-content">
+								<span style="font-weight: bold"> {{getDay}} </span>
+								<p class="description"> {{this.weather.0.description}} </p>
+								<p><span class="wi {{weatherImage this.weather.0.description 1}} largeFont"></span><span class="metric-number largeFont"> {{round this.temp.day}}</span><sup>°c</sup></p>
+								<div class="nightState">
+									<p> Night <span> {{round this.temp.night}}°c</span></p>
+								</div>
+							</div>
+						</div>
+						{{/if}}
+						{{/each}}
+						<br class="clear">
+					</div> <!-- /showLongTermReport -->
+
+					<div id="searchingCollapisble" class="collapsible-button" data-role="collapsible" data-collapsed-icon="false">
+						<h3> Display different search mechanics </h3>
+						<div id="searchWrapper">
+							<form>
+								<div class="ui-field-contain">
+									<label for="searchComboBox">Display other cities: </label>
+									<select name="select-native-3" id="searchComboBox" data-iconpos="left">
+										<option value=""> {{checkCurrentCity city.name}}{{city.name}} </option>
+										<option id="optBurlington" value="Burlington">Burlington</option>
+										<option id="optToronto" value="Toronto">Toronto</option>
+										<option id="optOakville" value="Oakville">Oakville</option>
+										<option id="optMilton" value="Milton">Milton</option>
+										<option id="optMississauga" value="Mississauga">Mississauga</option>
+										<option id="optHamilton" value="Hamilton">Hamilton</option>
+
+										<optgroup id="optGroup" label="Recent searches">
+										</optgroup>
+									</select>
+								</div>
+								<div data-role="fieldcontain">
+									<label for="textSearch"> Search for a city: </label>
+									<input type='text' id='searchbytext' name="textSearch" placeholder='enter city name here'/>
+								</div>
+							</form>
+							<input type='button' id='searchByTextButton' value='Search'/> 
+							<br>
+							<input type='button' id='currentLocation' value='Current location'>
+						</div> <!-- /searchWrapper -->
+					</div> <!-- /searchingCollapisble -->
+
+				</div> <!-- /container -->
+			</div> <!-- /main -->
+			<div data-role="footer" style="display:none"></div> <!-- /footer -->
+		
+	</script> <!-- End of handlebar template script -->
+</head>
+<body>
+	<!-- Gets populated by the handlebar data -->
+	<h1> Something went wrong :( </h1>
+	<div data-role="page" id="Home">
+	</div> <!-- End of data-role page -->
+</body>
+</html>
